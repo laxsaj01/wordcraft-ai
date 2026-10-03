@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordCraft AI — Documentation</title>
+<style>
+  :root { --primary:#6d5df6; --primary2:#22b8cf; --ink:#1c2030; --muted:#5b6478; --line:#e6e8f0; --bg:#f6f7fb; --code:#f2f3f9; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.65; }
+  .wrap { display:flex; max-width:1180px; margin:0 auto; gap:32px; padding:0 20px; }
+  nav.toc { position:sticky; top:0; align-self:flex-start; width:250px; max-height:100vh; overflow:auto; padding:28px 0; flex:0 0 250px; }
+  nav.toc h2 { font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:18px 0 8px; }
+  nav.toc a { display:block; color:var(--ink); text-decoration:none; font-size:14px; padding:5px 10px; border-radius:8px; }
+  nav.toc a:hover { background:#eceefb; color:var(--primary); }
+  main { flex:1; min-width:0; padding:28px 0 80px; }
+  header.hero { background:linear-gradient(120deg,var(--primary),var(--primary2)); color:#fff; border-radius:18px; padding:34px 32px; margin-bottom:28px; }
+  header.hero h1 { margin:0 0 6px; font-size:30px; }
+  header.hero p { margin:0; opacity:.92; }
+  .badge { display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.35); padding:3px 10px; border-radius:999px; font-size:12px; margin-top:14px; }
+  section { background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px 26px; margin-bottom:20px; }
+  section h2 { margin-top:0; font-size:22px; padding-bottom:10px; border-bottom:2px solid var(--line); }
+  section h3 { font-size:17px; margin:22px 0 8px; color:var(--primary); }
+  code { background:var(--code); padding:2px 6px; border-radius:5px; font-family:"SFMono-Regular",Consolas,monospace; font-size:13px; }
+  pre { background:#141726; color:#e6e8f0; padding:16px; border-radius:10px; overflow:auto; font-size:13px; line-height:1.5; }
+  pre code { background:none; color:inherit; padding:0; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:14px; }
+  th,td { text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:var(--bg); font-weight:600; }
+  .note { border-left:4px solid var(--primary2); background:#eef9fb; padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; }
+  .warn { border-left:4px solid #f6a609; background:#fff8e8; padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; }
+  ul,ol { padding-left:22px; }
+  li { margin:4px 0; }
+  a { color:var(--primary); }
+  .pill { display:inline-block; background:#eceefb; color:var(--primary); border-radius:999px; padding:2px 10px; font-size:12px; font-weight:600; }
+  footer { text-align:center; color:var(--muted); font-size:13px; padding:20px; }
+  @media (max-width:860px){ .wrap{flex-direction:column;} nav.toc{position:static;width:100%;flex:none;max-height:none;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc">
+  <h2>Getting Started</h2>
+  <a href="#intro">1. Introduction</a>
+  <a href="#requirements">2. Requirements</a>
+  <a href="#install">3. Installation</a>
+  <a href="#wizard">4. Install Wizard</a>
+  <a href="#ai">5. AI Provider Setup</a>
+  <h2>Using WordCraft</h2>
+  <a href="#features">6. Features Overview</a>
+  <a href="#writer">7. Writing Studio</a>
+  <a href="#chat">8. AI Chat</a>
+  <a href="#credits">9. Credits &amp; Plans</a>
+  <a href="#referral">10. Referrals</a>
+  <h2>Business</h2>
+  <a href="#payments">11. Payments</a>
+  <a href="#admin">12. Admin Panel</a>
+  <a href="#blog">13. Blog / CMS</a>
+  <a href="#tickets">14. Support Tickets</a>
+  <a href="#api">15. Developer API</a>
+  <h2>Reference</h2>
+  <a href="#i18n">16. Languages &amp; RTL</a>
+  <a href="#structure">17. File Structure</a>
+  <a href="#deploy">18. Deployment</a>
+  <a href="#faq">19. FAQ &amp; Troubleshooting</a>
+  <a href="#support">20. Support</a>
+</nav>
+<main>
+  <header class="hero">
+    <h1>WordCraft AI</h1>
+    <p>AI SEO Content Writer &amp; Article Generator — complete SaaS platform</p>
+    <span class="badge">Version 1.0.0 · Node.js + React · SQLite (zero DB setup)</span>
+  </header>
+
+  <section id="intro">
+    <h2>1. Introduction</h2>
+    <p>Thank you for purchasing <strong>WordCraft AI</strong>. It is a complete, self-hosted SaaS platform that lets your users generate marketing and SEO content with AI, chat with an assistant, save documents, buy credit plans, refer friends, open support tickets, and read your blog — all while you run the business from a built-in admin panel.</p>
+    <h3>What you get</h3>
+    <ul>
+      <li><strong>12 AI writing templates</strong> — SEO blog articles, product descriptions, meta tags, Google Ads, social posts, marketing emails, paraphrasing, summaries, grammar fixes, keyword ideas, FAQs and landing-page copy.</li>
+      <li><strong>Real-time streaming</strong> generation (Server-Sent Events) with a stop button.</li>
+      <li><strong>AI chat assistant</strong> with conversation history.</li>
+      <li><strong>Credit system</strong> with a full transaction ledger and automatic refunds when the AI provider fails.</li>
+      <li><strong>Subscriptions &amp; one-time packs</strong> via PayPal and Stripe.</li>
+      <li><strong>Referral program</strong> that rewards users in credits.</li>
+      <li><strong>Developer API</strong> (v1) with hashed keys for programmatic generation.</li>
+      <li><strong>Blog / CMS</strong> with public, SEO-friendly pages.</li>
+      <li><strong>Support ticket</strong> system.</li>
+      <li><strong>Admin panel</strong> — stats, users, plans, payments, blog, tickets and settings.</li>
+      <li><strong>5 languages</strong> (English, Spanish, French, German, Arabic) with full RTL support.</li>
+      <li><strong>Dark &amp; light themes</strong>, fully responsive.</li>
+      <li><strong>Works with any OpenAI-compatible API</strong> — OpenAI, DeepSeek, Groq, OpenRouter, Together, or a self-hosted model. No vendor lock-in.</li>
+    </ul>
+    <div class="note">WordCraft AI uses <strong>better-sqlite3</strong>, so there is <em>no database server to configure</em>. The database is a single file created automatically on first run. This makes installation as simple as <code>npm install &amp;&amp; npm start</code>.</div>
+  </section>
+
+  <section id="requirements">
+    <h2>2. Requirements</h2>
+    <table>
+      <tr><th>Component</th><th>Requirement</th></tr>
+      <tr><td>Node.js</td><td><strong>v18 or newer</strong> (v20+ recommended). Check with <code>node -v</code>.</td></tr>
+      <tr><td>npm</td><td>Comes with Node.js. Check with <code>npm -v</code>.</td></tr>
+      <tr><td>Build tools</td><td>A C++ compiler may be needed to build <code>better-sqlite3</code>. On most systems prebuilt binaries are downloaded automatically. If a build is required: Windows needs "Build Tools for Visual Studio"; macOS needs Xcode Command Line Tools; Linux needs <code>build-essential</code> and <code>python3</code>.</td></tr>
+      <tr><td>AI provider</td><td>An API key for any OpenAI-compatible service (OpenAI, DeepSeek, Groq, OpenRouter, etc.).</td></tr>
+      <tr><td>Payments (optional)</td><td>PayPal REST app credentials and/or a Stripe secret key. The app runs fully without them — checkout simply shows a friendly "not configured" message.</td></tr>
+      <tr><td>Disk</td><td>~150 MB including dependencies.</td></tr>
+    </table>
+  </section>
+
+  <section id="install">
+    <h2>3. Installation</h2>
+    <h3>Step 1 — Unzip</h3>
+    <p>Unzip the downloaded package. Open the <code>wordcraft-ai</code> folder in a terminal.</p>
+    <h3>Step 2 — Install dependencies</h3>
+    <pre><code>npm install</code></pre>
+    <h3>Step 3 — (Optional) Build the frontend</h3>
+    <p>A production build of the React frontend is already included in <code>client/dist</code>, so you can skip this. If you change any frontend source, rebuild with:</p>
+    <pre><code>npm run build</code></pre>
+    <h3>Step 4 — Start the server</h3>
+    <pre><code>npm start</code></pre>
+    <p>You will see:</p>
+    <pre><code>WordCraft AI is running at http://localhost:3000
+Open the URL in your browser to run the installation wizard.</code></pre>
+    <h3>Step 5 — Run the wizard</h3>
+    <p>Open <a href="http://localhost:3000">http://localhost:3000</a> in your browser. Because the app is not installed yet, you are redirected to the install wizard (see next section).</p>
+    <div class="note"><strong>Changing the port:</strong> set the <code>PORT</code> environment variable before starting, e.g. <code>PORT=8080 npm start</code> (Linux/macOS) or <code>set PORT=8080 &amp;&amp; npm start</code> (Windows).</div>
+    <div class="warn"><strong>Data location:</strong> the SQLite database is stored in <code>data/wordcraft.sqlite</code>. Back up this single file to back up everything (users, documents, plans, payments, blog, tickets, settings). You can relocate it with the <code>WCAI_DATA_DIR</code> environment variable.</div>
+  </section>
+
+  <section id="wizard">
+    <h2>4. Install Wizard</h2>
+    <p>The wizard appears only on first run (while the app is not installed). It creates your administrator account and seeds the default plans and settings.</p>
+    <table>
+      <tr><th>Field</th><th>Description</th></tr>
+      <tr><td>Site Name</td><td>Your brand name shown across the app (default: WordCraft AI).</td></tr>
+      <tr><td>Admin Name</td><td>Display name for the admin account.</td></tr>
+      <tr><td>Admin Email</td><td>Login email for the administrator. Must be valid.</td></tr>
+      <tr><td>Admin Password</td><td>Minimum 8 characters.</td></tr>
+    </table>
+    <p>After submitting, the system:</p>
+    <ol>
+      <li>Creates the admin user with a large credit balance.</li>
+      <li>Seeds three plans: <strong>Starter Pack</strong> ($9 one-time, 100 credits), <strong>Creator</strong> ($19/month, 300 credits), <strong>Business</strong> ($49/month, 1200 credits, API access).</li>
+      <li>Sets sensible defaults: signup bonus = 10 credits, referral reward = 20%, AI base URL = OpenAI, model = gpt-4o-mini.</li>
+      <li>Logs you in and redirects to the dashboard.</li>
+    </ol>
+    <div class="warn">The wizard can only be run once. To reset the app to a fresh state (for example before handing it to a client), stop the server and delete the <code>data</code> folder, then start again.</div>
+  </section>
+
+  <section id="ai">
+    <h2>5. AI Provider Setup</h2>
+    <p>WordCraft AI talks to any <strong>OpenAI-compatible</strong> Chat Completions API. Configure it in <em>Admin → Settings → AI Provider</em>.</p>
+    <table>
+      <tr><th>Setting</th><th>Example</th><th>Notes</th></tr>
+      <tr><td>AI Base URL</td><td><code>https://api.openai.com/v1</code></td><td>Must end in <code>/v1</code> for most providers.</td></tr>
+      <tr><td>AI API Key</td><td><code>sk-...</code></td><td>Stored server-side only; never exposed to the browser.</td></tr>
+      <tr><td>AI Model</td><td><code>gpt-4o-mini</code></td><td>Any chat model your provider offers.</td></tr>
+      <tr><td>Max Tokens</td><td><code>2048</code></td><td>Upper limit per response.</td></tr>
+      <tr><td>Temperature</td><td><code>0.7</code></td><td>0 = focused, 1 = creative.</td></tr>
+    </table>
+    <h3>Common providers</h3>
+    <table>
+      <tr><th>Provider</th><th>Base URL</th><th>Example model</th></tr>
+      <tr><td>OpenAI</td><td><code>https://api.openai.com/v1</code></td><td><code>gpt-4o-mini</code></td></tr>
+      <tr><td>DeepSeek</td><td><code>https://api.deepseek.com/v1</code></td><td><code>deepseek-chat</code></td></tr>
+      <tr><td>Groq</td><td><code>https://api.groq.com/openai/v1</code></td><td><code>llama-3.3-70b-versatile</code></td></tr>
+      <tr><td>OpenRouter</td><td><code>https://openrouter.ai/api/v1</code></td><td><code>openai/gpt-4o-mini</code></td></tr>
+      <tr><td>Together AI</td><td><code>https://api.together.xyz/v1</code></td><td><code>meta-llama/Llama-3.3-70B-Instruct-Turbo</code></td></tr>
+      <tr><td>Self-hosted (Ollama / vLLM / LM Studio)</td><td><code>http://localhost:11434/v1</code></td><td>your local model</td></tr>
+    </table>
+    <div class="note">Streaming uses the provider's SSE <code>stream:true</code> mode. If your provider does not support streaming, the non-streaming templates still work, and streaming templates fall back gracefully.</div>
+  </section>
+
+  <section id="features">
+    <h2>6. Features Overview</h2>
+    <p>The user application lives under <code>/app</code> and includes:</p>
+    <ul>
+      <li><strong>Dashboard</strong> — credit balance, quick stats, recent documents.</li>
+      <li><strong>Writing Studio</strong> — pick a template, fill the form, generate, edit, preview, copy, export, save.</li>
+      <li><strong>Documents</strong> — saved generations, rename, re-open, delete.</li>
+      <li><strong>AI Chat</strong> — multi-turn assistant with history.</li>
+      <li><strong>Plans &amp; Billing</strong> — browse plans, checkout with PayPal/Stripe, payment history.</li>
+      <li><strong>Referrals</strong> — personal referral link and earnings.</li>
+      <li><strong>API Keys</strong> — create/revoke keys for the developer API.</li>
+      <li><strong>Tickets</strong> — open and thread support conversations.</li>
+      <li><strong>Profile</strong> — update name and change password.</li>
+      <li><strong>Blog</strong> — public content marketing pages.</li>
+    </ul>
+  </section>
+
+  <section id="writer">
+    <h2>7. Writing Studio</h2>
+    <ol>
+      <li>Choose one of the 12 templates. Each shows its credit cost.</li>
+      <li>Fill the fields (required fields are marked). Options like tone, length and platform are dropdowns.</li>
+      <li>Click <strong>Generate</strong>. Streaming templates write to the editor word-by-word; click <strong>Stop</strong> to halt early.</li>
+      <li>Switch between <strong>Edit</strong> and <strong>Preview</strong> (Markdown rendered live).</li>
+      <li><strong>Copy</strong> to clipboard, <strong>Download</strong> as <code>.md</code>, <code>.txt</code> or <code>.html</code>, or <strong>Save</strong> to your Documents.</li>
+    </ol>
+    <table>
+      <tr><th>Template</th><th>Cost</th><th>Streaming</th></tr>
+      <tr><td>SEO Blog Article</td><td>3 credits</td><td>Yes</td></tr>
+      <tr><td>Landing Page Copy</td><td>2 credits</td><td>Yes</td></tr>
+      <tr><td>Product Description</td><td>1 credit</td><td>Yes</td></tr>
+      <tr><td>Paraphrase / Rewrite</td><td>1 credit</td><td>Yes</td></tr>
+      <tr><td>SEO Meta Tags</td><td>1 credit</td><td>No</td></tr>
+      <tr><td>Google Ads Copy</td><td>1 credit</td><td>No</td></tr>
+      <tr><td>Social Media Post</td><td>1 credit</td><td>No</td></tr>
+      <tr><td>Marketing Email</td><td>1 credit</td><td>No</td></tr>
+      <tr><td>Summarizer</td><td>1 credit</td><td>No</td></tr>
+      <tr><td>Grammar &amp; Spell Fix</td><td>1 credit</td><td>No</td></tr>
+      <tr><td>Keyword Ideas</td><td>1 credit</td><td>No</td></tr>
+      <tr><td>FAQ Generator</td><td>1 credit</td><td>No</td></tr>
+    </table>
+    <div class="note">Credits are deducted <em>before</em> the AI call. If the provider returns an error, the credits are <strong>automatically refunded</strong> and logged in the ledger.</div>
+  </section>
+
+  <section id="chat">
+    <h2>8. AI Chat</h2>
+    <p>Create a chat, then send messages. Each message costs <code>chat_cost_credits</code> (default 1). The assistant keeps the last 20 messages as context and uses the system prompt you set in <em>Admin → Settings → AI Provider</em>. Responses stream in real time and the full conversation is persisted.</p>
+  </section>
+
+  <section id="credits">
+    <h2>9. Credits &amp; Plans</h2>
+    <p>Credits are the internal currency. Every generation, chat message and API call spends credits; buying a plan adds them.</p>
+    <ul>
+      <li><strong>Signup bonus</strong> — new users receive <code>signup_bonus_credits</code> (default 10) automatically.</li>
+      <li><strong>Plans</strong> — one-time packs add credits once; subscriptions add credits and extend the plan expiry each billing cycle. Renewals stack the expiry date forward.</li>
+      <li><strong>Ledger</strong> — every credit movement (spend, purchase, refund, signup, referral, admin adjustment) is recorded and visible to the user under <em>Profile → Transactions</em> (and via <code>GET /api/transactions</code>).</li>
+    </ul>
+  </section>
+
+  <section id="referral">
+    <h2>10. Referrals</h2>
+    <p>Each user has a unique referral code and link (<code>?ref=CODE</code>). When a referred user makes a qualifying purchase, the referrer earns <code>referral_reward_percent</code> of the purchased credits (default 20%). The <em>Referrals</em> page shows the link, total earned, and the list of referred users (emails masked for privacy).</p>
+  </section>
+
+  <section id="payments">
+    <h2>11. Payments</h2>
+    <p>Both gateways are integrated with raw HTTPS calls (no SDKs), so there is nothing extra to install. Configure them in <em>Admin → Settings → Payments</em>. If a gateway is not configured, checkout returns a friendly message instead of crashing.</p>
+    <h3>PayPal</h3>
+    <table>
+      <tr><th>Setting</th><th>Value</th></tr>
+      <tr><td>PayPal Mode</td><td><code>sandbox</code> or <code>live</code></td></tr>
+      <tr><td>PayPal Client ID</td><td>From your PayPal REST app</td></tr>
+      <tr><td>PayPal Secret</td><td>From your PayPal REST app</td></tr>
+    </table>
+    <p>Create an app at <a href="https://developer.paypal.com/dashboard/applications">developer.paypal.com</a>. The return URL is <code>&lt;site_url&gt;/billing/return?gateway=paypal</code>.</p>
+    <h3>Stripe</h3>
+    <table>
+      <tr><th>Setting</th><th>Value</th></tr>
+      <tr><td>Stripe Secret Key</td><td><code>sk_test_...</code> or <code>sk_live_...</code></td></tr>
+    </table>
+    <p>Stripe Checkout is used (hosted payment page). The success URL carries <code>{CHECKOUT_SESSION_ID}</code>.</p>
+    <div class="note">Set <code>site_url</code> in <em>Admin → Settings → General</em> to your public URL so payment redirects return to the right place.</div>
+    <h3>Fulfilment flow</h3>
+    <ol>
+      <li>User clicks checkout → the server creates a PayPal order or Stripe session and returns a redirect URL.</li>
+      <li>User pays on the gateway, then returns to <code>/billing/return</code>.</li>
+      <li>The client calls <code>POST /api/billing/confirm</code>, which captures/verifies the payment.</li>
+      <li>On success, credits are added, the plan expiry is extended, the payment is recorded, and any referral reward is granted.</li>
+    </ol>
+  </section>
+
+  <section id="admin">
+    <h2>12. Admin Panel</h2>
+    <p>Admins see an extra <strong>Admin</strong> section. Non-admins are blocked (HTTP 403).</p>
+    <ul>
+      <li><strong>Dashboard</strong> — total users, revenue, credits spent, active subscriptions, a 30-day revenue chart, and recent signups.</li>
+      <li><strong>Users</strong> — search, adjust credits (via ledger), change role, suspend/activate, delete (cascades to their data).</li>
+      <li><strong>Plans</strong> — create/edit/delete plans; set price, credits, interval (once/month/year), words per generation, API access, feature list, active state and sort order.</li>
+      <li><strong>Payments</strong> — full payment history.</li>
+      <li><strong>Blog Posts</strong> — create/edit/publish/delete posts (slug auto-generated).</li>
+      <li><strong>Tickets</strong> — view all tickets, change status, reply.</li>
+      <li><strong>Settings</strong> — four tabs: General, AI Provider, Payments, Signup &amp; Referral.</li>
+    </ul>
+    <h3>Editable settings keys</h3>
+    <p><span class="pill">site_name</span> <span class="pill">site_tagline</span> <span class="pill">site_url</span> <span class="pill">currency</span> <span class="pill">currency_symbol</span> <span class="pill">ai_base_url</span> <span class="pill">ai_api_key</span> <span class="pill">ai_model</span> <span class="pill">ai_max_tokens</span> <span class="pill">ai_temperature</span> <span class="pill">chat_system_prompt</span> <span class="pill">chat_cost_credits</span> <span class="pill">signup_enabled</span> <span class="pill">signup_bonus_credits</span> <span class="pill">referral_reward_percent</span> <span class="pill">referral_credits_per_unit</span> <span class="pill">paypal_mode</span> <span class="pill">paypal_client_id</span> <span class="pill">paypal_secret</span> <span class="pill">stripe_secret_key</span> <span class="pill">footer_text</span></p>
+  </section>
+
+  <section id="blog">
+    <h2>13. Blog / CMS</h2>
+    <p>Write posts in the admin panel and publish them to a public, paginated blog at <code>/blog</code>. Each post has a unique slug, an excerpt, Markdown content, a view counter and a status (draft/published). Only published posts appear publicly. Markdown is rendered by a built-in, XSS-safe renderer (all HTML is escaped).</p>
+  </section>
+
+  <section id="tickets">
+    <h2>14. Support Tickets</h2>
+    <p>Users can open up to 5 concurrent tickets. Admins see all tickets, reply, and change status. When an admin replies the ticket becomes <em>answered</em>; when the user replies it returns to <em>open</em>. The full message thread is preserved.</p>
+  </section>
+
+  <section id="api">
+    <h2>15. Developer API (v1)</h2>
+    <p>Users on a plan with <strong>API access</strong> (e.g. Business) — or any admin — can generate content programmatically. Keys are created under <em>API Keys</em> and start with <code>wc_</code>. They are stored hashed (SHA-256) and shown only once.</p>
+    <h3>Authentication</h3>
+    <pre><code>Authorization: Bearer wc_your_key_here</code></pre>
+    <h3>Endpoints</h3>
+    <table>
+      <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+      <tr><td>GET</td><td><code>/api/v1/templates</code></td><td>List templates with their fields and costs.</td></tr>
+      <tr><td>GET</td><td><code>/api/v1/credits</code></td><td>Current credit balance.</td></tr>
+      <tr><td>POST</td><td><code>/api/v1/generate</code></td><td>Generate content for a template.</td></tr>
+    </table>
+    <h3>Example</h3>
+    <pre><code>curl -X POST https://your-site.com/api/v1/generate \
+  -H "Authorization: Bearer wc_your_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "template": "seo-meta",
+        "inputs": { "keyword": "crm software", "page": "Our CRM product page" }
+      }'</code></pre>
+    <p>Response:</p>
+    <pre><code>{
+  "template": "seo-meta",
+  "content": "...generated text...",
+  "credits_used": 1,
+  "credits_remaining": 42,
+  "usage": { ... }
+}</code></pre>
+    <h3>Error codes</h3>
+    <table>
+      <tr><th>Status</th><th>Meaning</th></tr>
+      <tr><td>401</td><td>Missing or invalid API key.</td></tr>
+      <tr><td>403</td><td>Key valid but no active plan with API access.</td></tr>
+      <tr><td>400</td><td>Unknown template or missing required inputs.</td></tr>
+      <tr><td>402</td><td>Insufficient credits.</td></tr>
+      <tr><td>502/503</td><td>AI provider error (credits refunded).</td></tr>
+    </table>
+  </section>
+
+  <section id="i18n">
+    <h2>16. Languages &amp; RTL</h2>
+    <p>Five locales ship in <code>client/src/locales</code>: <code>en</code>, <code>es</code>, <code>fr</code>, <code>de</code>, <code>ar</code>. The language selector is in the top bar. Choosing Arabic sets <code>dir="rtl"</code> on the document and the whole layout mirrors correctly. The choice persists in <code>localStorage</code>.</p>
+    <h3>Adding a language</h3>
+    <ol>
+      <li>Copy <code>en.json</code> to <code>xx.json</code> in <code>client/src/locales</code> and translate the values.</li>
+      <li>Register it in <code>client/src/i18n.jsx</code> (add to the locales map and, if RTL, to the RTL list).</li>
+      <li>Add the option to the language <code>&lt;select&gt;</code> in <code>AppLayout.jsx</code>.</li>
+      <li>Rebuild with <code>npm run build</code>.</li>
+    </ol>
+  </section>
+
+  <section id="structure">
+    <h2>17. File Structure</h2>
+    <pre><code>wordcraft-ai/
+├─ server.js              # Express entry point (serves API + built client)
+├─ package.json
+├─ vite.config.js
+├─ data/                  # SQLite database (created at runtime)
+├─ src/                   # Backend
+│  ├─ db.js               # Schema + connection (better-sqlite3, WAL)
+│  ├─ settings.js         # Settings key/value helpers
+│  ├─ ai.js               # OpenAI-compatible client (complete + stream)
+│  ├─ credits.js          # Credit ledger, spend/add/refund/referral
+│  ├─ templates.js        # The 12 writing templates
+│  ├─ middleware.js       # JWT auth, admin guard, install guard
+│  └─ routes/
+│     ├─ system.js        # install, register, login, me, change-password
+│     ├─ generate.js      # templates, generate, stream, documents
+│     ├─ chat.js          # chats + streaming messages
+│     ├─ billing.js       # plans, checkout, confirm, history
+│     ├─ user.js          # profile, transactions, referral, api-keys
+│     ├─ publicapi.js     # /api/v1 developer API
+│     ├─ blog.js          # public blog
+│     ├─ tickets.js       # support tickets
+│     └─ admin.js         # admin panel API
+└─ client/                # React frontend
+   ├─ index.html
+   ├─ public/
+   ├─ dist/               # Production build (served by Express)
+   └─ src/
+      ├─ App.jsx          # Routes + guards
+      ├─ api.js           # fetch helpers + SSE stream client
+      ├─ auth.jsx         # Auth context
+      ├─ i18n.jsx         # Translations + RTL
+      ├─ styles.css       # Design system (light/dark)
+      ├─ locales/         # en, es, fr, de, ar
+      ├─ components/      # Markdown renderer, UI kit, AppLayout
+      └─ pages/           # User pages + admin/ pages</code></pre>
+  </section>
+
+  <section id="deploy">
+    <h2>18. Deployment</h2>
+    <h3>Run in production with PM2</h3>
+    <pre><code>npm install -g pm2
+pm2 start server.js --name wordcraft
+pm2 save
+pm2 startup      # follow the printed command to enable on boot</code></pre>
+    <h3>Environment variables</h3>
+    <table>
+      <tr><th>Variable</th><th>Purpose</th><th>Default</th></tr>
+      <tr><td><code>PORT</code></td><td>HTTP port</td><td>3000 (or the saved setting)</td></tr>
+      <tr><td><code>WCAI_DATA_DIR</code></td><td>Folder for the SQLite file</td><td><code>./data</code></td></tr>
+    </table>
+    <h3>Reverse proxy (Nginx)</h3>
+    <p>Put Node behind Nginx and proxy to it. Because generation uses SSE, disable proxy buffering on the API path:</p>
+    <pre><code>location / {
+  proxy_pass http://127.0.0.1:3000;
+  proxy_http_version 1.1;
+  proxy_set_header Host $host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_buffering off;        # required for streaming
+  proxy_cache off;
+}</code></pre>
+    <div class="warn">Always serve the app over <strong>HTTPS</strong> in production so JWTs and API keys are protected. Set <code>site_url</code> to your HTTPS URL.</div>
+  </section>
+
+  <section id="faq">
+    <h2>19. FAQ &amp; Troubleshooting</h2>
+    <h3><code>better-sqlite3</code> fails to install</h3>
+    <p>It usually downloads a prebuilt binary. If it tries to compile and fails, install build tools (see Requirements), ensure Node is v18+, then run <code>npm install</code> again. You can also try <code>npm rebuild better-sqlite3</code>.</p>
+    <h3>Generation returns an error / 502</h3>
+    <p>Check <em>Admin → Settings → AI Provider</em>: the Base URL (must end in <code>/v1</code>), the API key, and the model name. Credits spent on a failed call are refunded automatically.</p>
+    <h3>Checkout says the gateway is not configured</h3>
+    <p>Add your PayPal and/or Stripe credentials in <em>Admin → Settings → Payments</em>, and set <code>site_url</code> in General settings.</p>
+    <h3>I locked myself out / want a fresh start</h3>
+    <p>Stop the server, delete the <code>data</code> folder, and restart. The install wizard will appear again. (This erases all data.)</p>
+    <h3>The page is blank after deploying</h3>
+    <p>Make sure <code>client/dist</code> exists (run <code>npm run build</code> if not) and that your proxy forwards <code>/api</code> to Node.</p>
+    <h3>Streaming does not work behind a proxy</h3>
+    <p>Disable proxy buffering/caching for the API path (see the Nginx example).</p>
+  </section>
+
+  <section id="support">
+    <h2>20. Support</h2>
+    <p>Support for this item includes:</p>
+    <ul>
+      <li>6 months of bug fixes and installation help from the author.</li>
+      <li>Access to updates and this documentation.</li>
+    </ul>
+    <p>Support does <em>not</em> include: customisation, third-party integration beyond the documented AI providers and payment gateways, or server administration for your specific host. For installation problems, please include your Node version (<code>node -v</code>), operating system, and the exact error text.</p>
+    <p style="margin-top:18px;color:var(--muted);font-size:13px;">WordCraft AI v1.0.0 — thank you for your purchase. If you enjoy the product, please consider leaving a rating on the item page.</p>
+  </section>
+
+  <footer>© WordCraft AI — Documentation</footer>
+</main>
+</div>
+</body>
+</html>
